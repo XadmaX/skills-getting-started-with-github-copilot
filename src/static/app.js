@@ -25,33 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
-          <div class="participants">
-            <h5 class="participants-title">Participants</h5>
-            <div class="participants-list-placeholder"></div>
-          </div>
         `;
 
         activitiesList.appendChild(activityCard);
-
-        // Populate participants list (use textContent to avoid injecting HTML)
-        const placeholder = activityCard.querySelector(".participants-list-placeholder");
-        const participants = Array.isArray(details.participants) ? details.participants : [];
-        if (participants.length > 0) {
-          const ul = document.createElement("ul");
-          ul.className = "participants-list";
-          participants.forEach((p) => {
-            const li = document.createElement("li");
-            li.className = "participant-item";
-            li.textContent = p;
-            ul.appendChild(li);
-          });
-          placeholder.appendChild(ul);
-        } else {
-          const no = document.createElement("p");
-          no.className = "no-participants";
-          no.textContent = "No participants yet. Be the first!";
-          placeholder.appendChild(no);
-        }
 
         // Add option to select dropdown
         const option = document.createElement("option");
